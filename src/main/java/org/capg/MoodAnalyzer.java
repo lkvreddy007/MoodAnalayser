@@ -3,6 +3,9 @@ package org.capg;
 public class MoodAnalyzer {
 	public String analyseMood(String message) throws MoodAnalysisException {
 		try {
+			if(message.length()==0) {
+				throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_EMPTY,"Please enter proper mood");
+			}
 			if(message.contains("sad")) {
 				return "SAD";
 			}else {
@@ -11,7 +14,7 @@ public class MoodAnalyzer {
 		}
 		catch (Exception e) {
 			System.out.println("Exception");
-			throw new MoodAnalysisException("Please enter proper message");
+			throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL,"Please enter proper message");
 		}
 	}
 }
